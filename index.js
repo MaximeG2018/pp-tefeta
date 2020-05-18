@@ -1,8 +1,9 @@
 
 const fs = require('fs');
 const path = require('path');
-const filename = path.join(__dirname, 'data/maps/oval.01.map');
+const filename = path.join(__dirname, 'data/maps/rect.04.map');
 const file = fs.readFileSync(filename).toString().split("\n");
+
 const labyrinth = [];
 let posNumberOne = [];
 let posNumberTwo = [];
@@ -17,10 +18,11 @@ for (const line of file) {
 
   if (nbLines != 0) {
     let lineWithoutSpace;
+
     if (line.indexOf("1") != -1) posNumberOne.push(line.indexOf("1"));
     if (line.indexOf("2") != -1) posNumberTwo.push(line.indexOf("2"));
 
-    if(line.indexOf(" ") > 1 && line.indexOf("1") == -1) {
+    if(line.indexOf(" ") > 1) {
       if(line.substring(posNumberOne[0],posNumberOne[0] + 1) == " ") {
         lineWithoutSpace = line.replaceAt(posNumberOne[0], "+");
         labyrinth.push(lineWithoutSpace);
@@ -32,6 +34,7 @@ for (const line of file) {
         labyrinth.push(line);
       }
   }
+
   nbLines++
 }
 
