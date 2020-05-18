@@ -1,10 +1,8 @@
 
 FROM node:13.2.0-alpine
 
-WORKDIR src/
 COPY package*.json ./
-RUN npm install
 COPY . .
-RUN npm time
+RUN  time ./index.js
 
-ENTRYPOINT [ "node","./data/maps/rect.01.map"]
+ENTRYPOINT [ "node","./data/maps/oval.01.map"]
