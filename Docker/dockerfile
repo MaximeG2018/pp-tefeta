@@ -1,0 +1,10 @@
+
+FROM node:13.2.0-alpine
+
+WORKDIR src/
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm time
+
+ENTRYPOINT [ "node","./data/maps/rect.01.map"]
